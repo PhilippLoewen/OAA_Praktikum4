@@ -5,6 +5,7 @@
 #include <limits>
 #include <SimpleException.h>
 #include <Priorityqueue.h>
+#include <map>
 #include "DiGraph.h"
 #include "Edge.h"
 
@@ -74,7 +75,49 @@ Node *DiGraph::findByKey(std::string pKey) {
 }
 
 Liste<Edge *> DiGraph::dijkstraShortestPath(std::string start, std::string end) {
-    Priorityqueue pq;
+    Priorityqueue<Node*> pq;
+
+    Liste<Edge*> result;
+    Node *startnode = findByKey(start);
+    Node *endnode = findByKey(end);
+
+    Node *u;
+
+    std::map<Node*,float> dist;
+    std::map<Node*,Node*> previous;
+
+    for(int i = 0; i < this->mNodes.size(); i++){
+        if (this->mNodes[i] == startnode)
+            dist[this->mNodes[i]] = 0;
+        else
+            dist[this->mNodes[i]] = std::numeric_limits<float>::infinity();
+
+        previous[this->mNodes[i]] = NULL;
+        pq.insert(this->mNodes[i], dist[this->mNodes[i]]);
+    }
+
+    while (!pq.isEmpty()){
+        u = pq.extractMin();
+        Liste<Edge*> outEdges = u->getEdges();
+
+        for(int i = 0; i < outEdges.size(); i++) {
+            Node *v = outEdges[i]->getEndNode();
+            float alt = dist[u] + outEdges[i]->getWeight();
+            if (alt < dist[v]) {
+                dist[v] = alt;
+                previous[v] = u;
+                pq.decreaseKey(v, alt);
+            }
+        }
+    }
+
+    u = endnode;
+
+    while (previous[u] != NULL){
+        result.append(previous[u]->getEdgeTo(u));
+        u = previous[u];
+    }
+
 
 }
 

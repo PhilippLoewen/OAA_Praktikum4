@@ -10,10 +10,11 @@
 #include <highgui.h>
 #include <math.h>
 #include <sstream>
+#include "GraphVisualizer.h"
 
 #define NODERADIUS 30
 
-class OpenCVGraphVisualizer {
+class OpenCVGraphVisualizer : public GraphVisualizer {
 
 private:
     cv::Mat img;
@@ -37,9 +38,6 @@ public:
                  drawEdge(*edges[j], cv::Scalar(0,0,0),edges[j]->getWeight());
              }
         }
-
-
-
 
     }
 
@@ -95,6 +93,12 @@ public:
         p.x = (int) (q.x + arrowMagnitude * cos(angle - PI / 8));
         p.y = (int) (q.y + arrowMagnitude * sin(angle - PI / 8));
         cv::line(img, p, q, color, thickness, CV_AA);
+    }
+
+    void highlightPath(Liste<Edge*> path) {
+        for (Edge *edge : path){
+            drawEdge(*edge, cv::Scalar(255,0,0),edge->getWeight(), 2);
+        }
     }
 };
 

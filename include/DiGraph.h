@@ -8,6 +8,7 @@
 
 #include "liste.h"
 #include "Edge.h"
+#include "GraphVisualizer.h"
 
 class Node;
 
@@ -26,10 +27,18 @@ public:
 
     Liste<Edge*> dijkstraShortestPath(std::string start, std::string end);
 
+    void setVisualizer(GraphVisualizer graphVisualizer);
+
+    GraphVisualizer* getVisualizer();
+
+    void highlightPath(Liste<Edge*> path);
+
 private:
     Liste<Node*> mNodes;
 
     Node *findByKey(std::string pKey);
+
+    GraphVisualizer* mGraphVisualizer;
 };
 
 

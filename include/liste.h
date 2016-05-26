@@ -24,6 +24,31 @@ public:
     int size();
 
     T operator[](int pos);
+
+    Liste<T>::Iter begin();
+
+    class Iter {
+    private:
+        T *_cursor;
+    public:
+        Iter (T *cursor = 0) {
+            _cursor = cursor;
+        }
+        bool operator!=(Iter iter) const{
+            return _cursor != iter._cursor;
+        }
+        T& operator*() const {
+            return *_cursor;
+        }
+        Iter operator++(int) {
+            Iter it = *this;
+            _cursor++;
+            return it;
+        }
+
+    };
+
+    Iter end();
 };
 
 // -------------------------------------------------------------------
@@ -139,6 +164,16 @@ int Liste<T>::size() {
 template <typename T>
 T Liste<T>::operator[](int pos) {
     return getValueAt(pos);
+}
+
+template <typename T>
+Liste<T>::Iter Liste<T>::begin() {
+    return _values;
+}
+
+template <typename T>
+Liste<T>::Iter Liste<T>::end() {
+    return _values + _last;
 }
 
 

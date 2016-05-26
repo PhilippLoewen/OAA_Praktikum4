@@ -3,6 +3,7 @@
 //
 
 #include "Node.h"
+#include "Edge.h"
 
 
 std::string Node::getKey() const {
@@ -20,6 +21,18 @@ void Node::setKey(std::string new_key) {
 void Node::setNewEdge(Edge *edge) {
     mEdges.append(edge);
 }
+
+Edge *Node::getEdgeTo(Node *endnode) {
+    int i = 0;
+    while(this->mEdges[i]->getEndNode() != endnode && i < this->mEdges.size()) {
+        i++;
+    }
+    if (i == this->mEdges.size())
+        throw "Edge not found";
+    return this->mEdges[i];
+}
+
+
 
 
 

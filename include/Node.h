@@ -8,6 +8,7 @@
 #include <string>
 #include "liste.h"
 
+
 class Edge;
 
 class Node {
@@ -37,6 +38,8 @@ public:
     void setPositionY(int positionY) {
         mPositionY = positionY;
     }
+
+    Edge* getEdgeTo(Node* endnode);
 
 private:
     std::string mNodeKey;
