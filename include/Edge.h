@@ -11,11 +11,11 @@
 class Edge {
 public:
 
-    float getWeight();
+    double getWeight();
     Node * getStartNode();
     Node * getEndNode();
 
-    void setWeight(float w);
+    void setWeight(double w);
 
     void setStartNode(Node * n);
 
@@ -27,7 +27,7 @@ private:
 
     Node *mEndnode;
 
-    float mWeight;
+    double mWeight;
 
 };
 

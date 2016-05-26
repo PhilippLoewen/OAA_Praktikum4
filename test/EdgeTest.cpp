@@ -22,7 +22,7 @@ struct EdgeTest : public testing::Test {
 };
 
 TEST_F(EdgeTest, weight) {
-    float weight = rand() % 10;
+    double weight = rand() % 10;
     edge->setWeight(weight);
     EXPECT_EQ(weight, edge->getWeight());
 }

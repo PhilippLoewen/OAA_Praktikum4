@@ -23,11 +23,11 @@ protected:
 template <typename T>
 class Priorityqueue {
 public:
-    void insert(T value, float p);
+    void insert(T value, double p);
 
     T extractMin();
 
-    void decreaseKey(T value, float p);
+    void decreaseKey(T value, double p);
 
     void remove(T value);
 
@@ -42,7 +42,7 @@ public:
 private:
     struct pqentry_t {
         T value;
-        float prio;
+        double prio;
     };
     unsigned long insPos;
     unsigned long size;
@@ -74,7 +74,7 @@ Priorityqueue<T>::Priorityqueue() {
 }
 
 template<typename T>
-void Priorityqueue<T>::insert(T value, float p) {
+void Priorityqueue<T>::insert(T value, double p) {
     if (insPos == size) {
         grow();
     }
@@ -141,9 +141,9 @@ unsigned long Priorityqueue<T>::getRightChild(unsigned long index) {
 }
 
 template<typename T>
-void Priorityqueue<T>::decreaseKey(T value, float p) {
+void Priorityqueue<T>::decreaseKey(T value, double p) {
     unsigned long i = findByValue(value, 0);
-    float old_value;
+    double old_value;
     if (i == insPos) {
         throw QueueException("This doesn't exist in here", 1337);
     }

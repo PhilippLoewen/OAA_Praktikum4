@@ -16,7 +16,7 @@ void DiGraph::addNode(Node *node) {
     mNodes.append(node);
 }
 
-void DiGraph::addEdge(std::string pKey1, std::string pKey2, float pWeight) {
+void DiGraph::addEdge(std::string pKey1, std::string pKey2, double pWeight) {
     Edge *edge = new Edge;
     Node *node1 = findByKey(pKey1);
     Node *node2 = findByKey(pKey2);
@@ -83,14 +83,14 @@ Liste<Edge *> DiGraph::dijkstraShortestPath(std::string start, std::string end) 
 
     Node *u;
 
-    std::map<Node*,float> dist;
+    std::map<Node*,double> dist;
     std::map<Node*,Node*> previous;
 
     for(int i = 0; i < this->mNodes.size(); i++){
         if (this->mNodes[i] == startnode)
             dist[this->mNodes[i]] = 0;
         else
-            dist[this->mNodes[i]] = std::numeric_limits<float>::infinity();
+            dist[this->mNodes[i]] = std::numeric_limits<double>::infinity();
 
         previous[this->mNodes[i]] = NULL;
         pq.insert(this->mNodes[i], dist[this->mNodes[i]]);
@@ -102,7 +102,7 @@ Liste<Edge *> DiGraph::dijkstraShortestPath(std::string start, std::string end) 
 
         for(int i = 0; i < outEdges.size(); i++) {
             Node *v = outEdges[i]->getEndNode();
-            float alt = dist[u] + outEdges[i]->getWeight();
+            double alt = dist[u] + outEdges[i]->getWeight();
             if (alt < dist[v]) {
                 dist[v] = alt;
                 previous[v] = u;

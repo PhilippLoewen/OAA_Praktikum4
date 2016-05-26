@@ -10,8 +10,10 @@ include_directories(include)
 add_subdirectory(test)
 
 set(PRAKTIKUM3_SRC
-        src/DiGraph.cpp src/Node.cpp src/Edge.cpp
-        include/Priorityqueue.h include/liste.h include/DiGraph.h include/Node.h include/Edge.h src/OpenCVGraphVisualizer.cpp include/OpenCVGraphVisualizer.h include/SimpleException.h)
+        src/DiGraph.cpp src/Node.cpp src/Edge.cpp src/Navigator.cpp
+        include/Priorityqueue.h include/liste.h include/DiGraph.h include/Node.h include/Edge.h
+        include/OpenCVGraphVisualizer.h include/SimpleException.h include/GraphVisualizer.h
+        include/Navigator.h include/Bicycle.h include/Car.h include/Motorcycle.h include/Vehicle.h)
 
 
 add_library(core ${PRAKTIKUM3_SRC})

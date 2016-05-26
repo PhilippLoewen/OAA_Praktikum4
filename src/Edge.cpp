@@ -4,7 +4,7 @@
 
 #include "Edge.h"
 
-float Edge::getWeight() {
+double Edge::getWeight() {
     return mWeight;
 }
 
@@ -20,7 +20,7 @@ void Edge::setStartNode(Node *n) {
     mStartnode = n;
 }
 
-void Edge::setWeight(float w) {
+void Edge::setWeight(double w) {
     mWeight = w;
 }
 
