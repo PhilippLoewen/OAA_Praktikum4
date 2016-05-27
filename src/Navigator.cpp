@@ -3,17 +3,24 @@
 //
 
 #include "Navigator.h"
+#include "DiGraph.h"
 
 void Navigator::setGraph(DiGraph *diGraph) {
-    mDiGraph = diGraph;
+    this->mDiGraph = diGraph;
 }
 
 void Navigator::setVehicle(Vehicle *vehicle) {
-    mVehicle = vehicle;
+    this->mVehicle = vehicle;
 }
 
 double Navigator::planRoute(std::string from, std::string to) {
-    
+    Liste<Edge*> path = this->mDiGraph->dijkstraShortestPath(from, to);
+    this->mDiGraph->getVisualizer()->highlightPath(path);
+    double time = 0;
+    for (auto edge : path) {
+        time += this->mVehicle->neededTimeForDistance(edge->getWeight());
+    }
+
 }
 
 

@@ -12,7 +12,9 @@ protected:
     double speed;
 
 public:
-    virtual double neededTimeForDistance(double dist);
+    virtual double neededTimeForDistance(double dist) = 0;
+
+    Vehicle (double speed = 50) : speed { speed } {};
 
 };
 

@@ -27,11 +27,9 @@ public:
 
     Liste<Edge*> dijkstraShortestPath(std::string start, std::string end);
 
-    void setVisualizer(GraphVisualizer graphVisualizer);
+    void setVisualizer(GraphVisualizer *graphVisualizer);
 
     GraphVisualizer* getVisualizer();
-
-    void highlightPath(Liste<Edge*> path);
 
 private:
     Liste<Node*> mNodes;

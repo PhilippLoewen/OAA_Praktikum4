@@ -15,6 +15,8 @@ class Node {
 public:
     Node(int x = 0, int y = 0) : mPositionX{ x }, mPositionY{y}{};
 
+    Node(std::string key, int x, int y) : mNodeKey { key }, mPositionX { x }, mPositionY { y } {};
+
     std::string getKey() const;
 
     Liste<Edge *> getEdges();

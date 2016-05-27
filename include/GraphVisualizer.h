@@ -6,12 +6,16 @@
 #define PRAKTIKUM3_GRAPHVISUALIZER_H
 
 
+class DiGraph;
+
 class GraphVisualizer {
 
 public:
-    virtual void render(DiGraph digraph);
+    virtual void render(DiGraph &digraph) = 0;
 
-    virtual void show();
+    virtual void show() = 0;
+
+    virtual void highlightPath(Liste<Edge*> path) = 0;
 
 };
 

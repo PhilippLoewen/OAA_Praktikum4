@@ -25,7 +25,7 @@ public:
 
     T operator[](int pos);
 
-    Liste<T>::Iter begin();
+
 
     class Iter {
     private:
@@ -45,10 +45,19 @@ public:
             _cursor++;
             return it;
         }
+        Iter operator++() {
+            return ++_cursor;
+        }
 
     };
 
-    Iter end();
+    Iter begin() {
+        return _values;
+    }
+
+    Iter end() {
+        return _values + _last;
+    }
 };
 
 // -------------------------------------------------------------------
@@ -164,16 +173,6 @@ int Liste<T>::size() {
 template <typename T>
 T Liste<T>::operator[](int pos) {
     return getValueAt(pos);
-}
-
-template <typename T>
-Liste<T>::Iter Liste<T>::begin() {
-    return _values;
-}
-
-template <typename T>
-Liste<T>::Iter Liste<T>::end() {
-    return _values + _last;
 }
 
 

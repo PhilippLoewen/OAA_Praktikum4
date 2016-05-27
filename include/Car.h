@@ -9,8 +9,8 @@
 #include "Vehicle.h"
 
 class Car : public Vehicle {
-
-    Car(double speed = 60) : speed { speed } {};
+public:
+    Car(double speed = 60) : Vehicle(speed) {};
 
     double neededTimeForDistance(double dist) {
         return dist / speed;

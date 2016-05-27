@@ -8,6 +8,10 @@ set(test_SRC EdgeTest.cpp gtest.cpp NodeTest.cpp DiGraphTest.cpp Helper.h)
 
 add_executable(runUnitTests ${test_SRC})
 
+add_executable(givenTest giventest.cpp)
+
+target_link_libraries(givenTest core ${OpenCV_LIBS})
+
 target_link_libraries(runUnitTests ${GTEST_BOTH_LIBRARIES} core)
 
 add_test(runUnitTests runUnitTests)

@@ -86,23 +86,23 @@ Liste<Edge *> DiGraph::dijkstraShortestPath(std::string start, std::string end) 
     std::map<Node*,double> dist;
     std::map<Node*,Node*> previous;
 
-    for(int i = 0; i < this->mNodes.size(); i++){
-        if (this->mNodes[i] == startnode)
-            dist[this->mNodes[i]] = 0;
+    for(auto node : this->mNodes){
+        if (node == startnode)
+            dist[node] = 0;
         else
-            dist[this->mNodes[i]] = std::numeric_limits<double>::infinity();
+            dist[node] = std::numeric_limits<double>::infinity();
 
-        previous[this->mNodes[i]] = NULL;
-        pq.insert(this->mNodes[i], dist[this->mNodes[i]]);
+        previous[node] = nullptr;
+        pq.insert(node, dist[node]);
     }
 
     while (!pq.isEmpty()){
         u = pq.extractMin();
         Liste<Edge*> outEdges = u->getEdges();
 
-        for(int i = 0; i < outEdges.size(); i++) {
-            Node *v = outEdges[i]->getEndNode();
-            double alt = dist[u] + outEdges[i]->getWeight();
+        for(auto edge : outEdges) {
+            Node *v = edge->getEndNode();
+            double alt = dist[u] + edge->getWeight();
             if (alt < dist[v]) {
                 dist[v] = alt;
                 previous[v] = u;
@@ -113,13 +113,25 @@ Liste<Edge *> DiGraph::dijkstraShortestPath(std::string start, std::string end) 
 
     u = endnode;
 
-    while (previous[u] != NULL){
+    while (previous[u] != nullptr){
         result.append(previous[u]->getEdgeTo(u));
         u = previous[u];
     }
 
 
 }
+
+void DiGraph::setVisualizer(GraphVisualizer *graphVisualizer) {
+    mGraphVisualizer = graphVisualizer;
+}
+
+GraphVisualizer *DiGraph::getVisualizer() {
+    return mGraphVisualizer;
+}
+
+
+
+
 
 
 

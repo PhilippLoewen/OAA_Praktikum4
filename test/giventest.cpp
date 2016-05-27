@@ -3,15 +3,16 @@
 //
 
 #include "DiGraph.h"
-#include "Node.h"
 #include <string>
 #include <iostream>
+#include <Car.h>
 #include "GraphVisualizer.h"
 #include "Vehicle.h"
 #include "Navigator.h"
+#include "OpenCVGraphVisualizer.h"
 
 
-void createDummyGraph(Digraph &g) {
+void createDummyGraph(DiGraph &g) {
     g.addNode( new Node("Aachen", 100, 600));
     g.addNode( new Node("Berlin", 300, 650));
     g.addNode( new Node("Koeln", 300, 300));
@@ -19,14 +20,14 @@ void createDummyGraph(Digraph &g) {
     g.addNode( new Node("Bonn", 300, 150));
     g.addNode( new Node("Krefeld", 100, 160));
 
-    g.createEdge("Aachen", "Berlin", 7);
-    g.createEdge("Koeln", "Aachen", 9);
-    g.createEdge("Aachen", "Krefeld", 7);
-    g.createEdge("Berlin", "Essen", 40);
-    g.createEdge("Berlin", "Koeln", 3);
-    g.createEdge("Koeln", "Essen", 31);
-    g.createEdge("Bonn", "Essen", 8);
-    g.createEdge("Krefeld", "Bonn", 1);
+    g.addEdge("Aachen", "Berlin", 7);
+    g.addEdge("Koeln", "Aachen", 9);
+    g.addEdge("Aachen", "Krefeld", 7);
+    g.addEdge("Berlin", "Essen", 40);
+    g.addEdge("Berlin", "Koeln", 3);
+    g.addEdge("Koeln", "Essen", 31);
+    g.addEdge("Bonn", "Essen", 8);
+    g.addEdge("Krefeld", "Bonn", 1);
 
 
 }
