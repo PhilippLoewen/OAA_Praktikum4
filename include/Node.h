@@ -6,7 +6,7 @@
 #define PRAKTIKUM3_NODE_H
 
 #include <string>
-#include "liste.h"
+#include <vector>
 
 
 class Edge;
@@ -19,7 +19,7 @@ public:
 
     std::string getKey() const;
 
-    Liste<Edge *> getEdges();
+    std::vector<Edge *> getEdges();
 
     void setKey(std::string new_key);
 
@@ -48,7 +48,7 @@ private:
 
     int mPositionX, mPositionY;
 
-    Liste<Edge *> mEdges;
+    std::vector<Edge *> mEdges;
 
 
 };

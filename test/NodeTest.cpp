@@ -88,7 +88,7 @@ TEST_F(NodeTest, edgetest) {
     edge->setEndNode(&node[1]);
     node->setNewEdge(edge);
 
-    Liste<Edge *> edges = node[0].getEdges();
+    std::vector<Edge *> edges = node[0].getEdges();
     EXPECT_EQ(edge, edges[0]);
     EXPECT_EQ(posx[0], edges[0]->getStartNode()->getPositionX());
     EXPECT_EQ(posy[0], edges[0]->getStartNode()->getPositionY());

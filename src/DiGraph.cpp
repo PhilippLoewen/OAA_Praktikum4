@@ -6,6 +6,7 @@
 #include <SimpleException.h>
 #include <Priorityqueue.h>
 #include <map>
+#include <iostream>
 #include "DiGraph.h"
 #include "Edge.h"
 
@@ -13,7 +14,7 @@
 
 
 void DiGraph::addNode(Node *node) {
-    mNodes.append(node);
+    mNodes.push_back(node);
 }
 
 void DiGraph::addEdge(std::string pKey1, std::string pKey2, double pWeight) {
@@ -26,10 +27,10 @@ void DiGraph::addEdge(std::string pKey1, std::string pKey2, double pWeight) {
     node1->setNewEdge(edge);
 }
 
-Liste<Node *> DiGraph::getNeighbours(std::string key) {
+std::vector<Node *> DiGraph::getNeighbours(std::string key) {
     Node *tmpnode,*startnode,*endnode;
-    Liste<Edge *> edges;
-    Liste<Node *> retList;
+    std::vector<Edge *> edges;
+    std::vector<Node *> retList;
     for (int i = 0; i < mNodes.size(); i++) {
         tmpnode = mNodes[i];
         edges = tmpnode->getEdges();
@@ -37,10 +38,10 @@ Liste<Node *> DiGraph::getNeighbours(std::string key) {
             startnode = edges[j]->getStartNode();
             endnode = edges[j]->getEndNode();
             if (startnode->getKey() == key && startnode != endnode) {
-                retList.append(endnode);
+                retList.push_back(endnode);
             }
             if (endnode->getKey() == key && startnode != endnode) {
-                retList.append(startnode);
+                retList.push_back(startnode);
             }
         }
 
@@ -49,15 +50,15 @@ Liste<Node *> DiGraph::getNeighbours(std::string key) {
     return retList;
 }
 
-Liste<Edge *> DiGraph::getEdges(std::string key) {
+std::vector<Edge *> DiGraph::getEdges(std::string key) {
     Node *node = findByKey(key);
     return node->getEdges();
 }
 
-Liste<Node *> DiGraph::getNodes() {
-    Liste<Node *> nodes;
+std::vector<Node *> DiGraph::getNodes() {
+    std::vector<Node *> nodes;
     for (int i = 0; i < mNodes.size(); i++) {
-        nodes.append(mNodes[i]);
+        nodes.push_back(mNodes[i]);
     }
     return nodes;
 }
@@ -74,14 +75,15 @@ Node *DiGraph::findByKey(std::string pKey) {
     return mNodes[i];
 }
 
-Liste<Edge *> DiGraph::dijkstraShortestPath(std::string start, std::string end) {
+std::vector<Edge *> DiGraph::dijkstraShortestPath(std::string start, std::string end) {
     Priorityqueue<Node*> pq;
 
-    Liste<Edge*> result;
+    std::vector<Edge*> result;
     Node *startnode = findByKey(start);
     Node *endnode = findByKey(end);
 
     Node *u;
+    Node *v;
 
     std::map<Node*,double> dist;
     std::map<Node*,Node*> previous;
@@ -96,12 +98,14 @@ Liste<Edge *> DiGraph::dijkstraShortestPath(std::string start, std::string end) 
         pq.insert(node, dist[node]);
     }
 
+    //std::cout << "Between for and while\n";
+
     while (!pq.isEmpty()){
         u = pq.extractMin();
-        Liste<Edge*> outEdges = u->getEdges();
+        std::vector<Edge*> outEdges = u->getEdges();
 
         for(auto edge : outEdges) {
-            Node *v = edge->getEndNode();
+            v = edge->getEndNode();
             double alt = dist[u] + edge->getWeight();
             if (alt < dist[v]) {
                 dist[v] = alt;
@@ -113,10 +117,15 @@ Liste<Edge *> DiGraph::dijkstraShortestPath(std::string start, std::string end) 
 
     u = endnode;
 
-    while (previous[u] != nullptr){
-        result.append(previous[u]->getEdgeTo(u));
+    //std::cout << previous[u]->getKey();
+
+
+   while (previous[u] != nullptr){
+        result.push_back(previous[u]->getEdgeTo(u));
         u = previous[u];
     }
+
+    return result;
 
 
 }

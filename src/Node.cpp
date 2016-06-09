@@ -10,7 +10,7 @@ std::string Node::getKey() const {
     return mNodeKey;
 }
 
-Liste<Edge *> Node::getEdges() {
+std::vector<Edge *> Node::getEdges() {
     return mEdges;
 }
 
@@ -19,7 +19,7 @@ void Node::setKey(std::string new_key) {
 }
 
 void Node::setNewEdge(Edge *edge) {
-    mEdges.append(edge);
+    mEdges.push_back(edge);
 }
 
 Edge *Node::getEdgeTo(Node *endnode) {

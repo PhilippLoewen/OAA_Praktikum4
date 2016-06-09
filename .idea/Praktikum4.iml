@@ -8,21 +8,21 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Node.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/SimpleException.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Priorityqueue.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Navigator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Bicycle.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/DiGraph.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/GraphVisualizer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Node.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Car.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/Edge.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/Priorityqueue.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/GraphVisualizer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/OpenCVGraphVisualizer.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/liste.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Edge.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Vehicle.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SimpleException.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Motorcycle.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/gtest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test/NavigatorTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/EdgeTest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/giventest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/NodeTest.cpp" isTestSource="false" />

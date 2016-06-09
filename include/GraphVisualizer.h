@@ -8,6 +8,8 @@
 
 class DiGraph;
 
+class Edge;
+
 class GraphVisualizer {
 
 public:
@@ -15,7 +17,7 @@ public:
 
     virtual void show() = 0;
 
-    virtual void highlightPath(Liste<Edge*> path) = 0;
+    virtual void highlightPath(std::vector<Edge*> path) = 0;
 
 };
 

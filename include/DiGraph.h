@@ -6,7 +6,7 @@
 #define PRAKTIKUM3_DIGRAPH_H
 
 
-#include "liste.h"
+
 #include "Edge.h"
 #include "GraphVisualizer.h"
 
@@ -19,20 +19,20 @@ public:
 
     void addEdge(std::string pKey1, std::string pKey2, double pWeight);
 
-    Liste<Node*> getNeighbours(std::string key);
+    std::vector<Node*> getNeighbours(std::string key);
 
-    Liste<Edge*> getEdges(std::string key);
+    std::vector<Edge*> getEdges(std::string key);
 
-    Liste<Node*> getNodes();
+    std::vector<Node*> getNodes();
 
-    Liste<Edge*> dijkstraShortestPath(std::string start, std::string end);
+    std::vector<Edge*> dijkstraShortestPath(std::string start, std::string end);
 
     void setVisualizer(GraphVisualizer *graphVisualizer);
 
     GraphVisualizer* getVisualizer();
 
 private:
-    Liste<Node*> mNodes;
+    std::vector<Node*> mNodes;
 
     Node *findByKey(std::string pKey);
 

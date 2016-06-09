@@ -37,11 +37,12 @@ void createDummyGraph(DiGraph &g) {
 int main(int argc, char **argv) {
 
     DiGraph myGraph;
-    OpenCVGraphVisualizer graphviz;
+    OpenCVGraphVisualizer graphviz(1500,960);
     myGraph.setVisualizer(&graphviz);
     createDummyGraph(myGraph);
     Navigator navi(&myGraph);
-    int speed = 120;
+    int speed = 10;
     navi.setVehicle(new Car(speed));
-    std::cout << "Fahrzeit: " << navi.planRoute("Aachen", "Essen") << std::endl;
+    std::cout << "Fahrzeit: " << navi.planRoute("Essen", "Aachen") << std::endl; // TODO Nicht vorhandene Stecken abfangen
+
 }

@@ -10,7 +10,9 @@
 
 class Bicycle : protected Vehicle {
 
-    Bicycle ( double speed = 30) : speed { speed } {};
+public:
+
+    Bicycle ( double speed = 30) : Vehicle (speed) {};
 
     double neededTimeForDistance(double dist) {
         return dist / speed;

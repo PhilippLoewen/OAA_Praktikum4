@@ -11,6 +11,9 @@
 #include <math.h>
 #include <sstream>
 #include "GraphVisualizer.h"
+#include "DiGraph.h"
+#include "Node.h"
+#include "Edge.h"
 
 #define NODERADIUS 30
 
@@ -29,11 +32,11 @@ public:
 
     void render(DiGraph &g) {
         this->img.setTo(cv::Scalar(255, 255, 255));
-        Liste<Node *> nodes = g.getNodes();
+        std::vector<Node *> nodes = g.getNodes();
 
         for(int i = 0; i < nodes.size(); i++) {
             drawNode(*nodes[i],cv::Scalar(0,0,0));
-            Liste<Edge *> edges = nodes[i]->getEdges();
+            std::vector<Edge *> edges = nodes[i]->getEdges();
             for (int j = 0; j < edges.size(); j++) {
                  drawEdge(*edges[j], cv::Scalar(0,0,0),edges[j]->getWeight());
              }
@@ -44,7 +47,7 @@ public:
     virtual void show() {
 
         cv::namedWindow("Graph");
-        cvStartWindowThread();
+        //cvStartWindowThread();
         cv::imshow("Graph", this->img);
         cv::waitKey();
         cvDestroyAllWindows();
@@ -95,8 +98,8 @@ public:
         cv::line(img, p, q, color, thickness, CV_AA);
     }
 
-    void highlightPath(Liste<Edge*> path) {
-        for (Edge *edge : path){
+    void highlightPath(std::vector<Edge*> path) {
+        for (Edge* edge : path){
             drawEdge(*edge, cv::Scalar(255,0,0),edge->getWeight(), 2);
         }
     }

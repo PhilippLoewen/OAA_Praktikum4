@@ -19,7 +19,11 @@ public:
 
     void setGraph(DiGraph *diGraph);
 
+    DiGraph* getGraph();
+
     void setVehicle(Vehicle *vehicle);
+
+    Vehicle * getVehicle();
 
     double planRoute(std::string from, std::string to);
 

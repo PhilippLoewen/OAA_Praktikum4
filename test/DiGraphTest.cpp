@@ -4,6 +4,7 @@
 
 #include <gtest/gtest.h>
 #include <stdlib.h>
+#include <OpenCVGraphVisualizer.h>
 #include "DiGraph.h"
 #include "Helper.h"
 
@@ -55,7 +56,7 @@ TEST_F(DiGraphTest, complete) {
     }
 
     // Check
-    Liste<Node *> nodelist = diGraph.getNodes();
+    std::vector<Node *> nodelist = diGraph.getNodes();
 
     for (int i = 0; i < ANZAHL; i++) {
 
@@ -63,7 +64,7 @@ TEST_F(DiGraphTest, complete) {
         EXPECT_EQ(posx[i], nodelist[i]->getPositionX());
         EXPECT_EQ(posy[i], nodelist[i]->getPositionY());
 
-        Liste<Edge *> edgelist = nodelist[i]->getEdges();
+        std::vector<Edge *> edgelist = nodelist[i]->getEdges();
 
         for (int j = 0; j < edgelist.size(); j++) {
             EXPECT_EQ(weight[i + 1],edgelist[j]->getWeight());
@@ -72,4 +73,11 @@ TEST_F(DiGraphTest, complete) {
 
         EXPECT_EQ(posx[i], node[i].getPositionX());
     }
+}
+
+TEST_F(DiGraphTest, visualizer) {
+    OpenCVGraphVisualizer openCVGraphVisualizer;
+    digraph->setVisualizer(&openCVGraphVisualizer);
+
+    EXPECT_EQ(&openCVGraphVisualizer, digraph->getVisualizer());
 }

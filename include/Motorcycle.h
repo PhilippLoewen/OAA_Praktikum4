@@ -6,9 +6,13 @@
 #define PRAKTIKUM3_MOTORCYCLE_H
 
 
-class Motorcycle : protected Vehicle {
+#include "Vehicle.h"
 
-    Motorcycle ( double speed = 90) : speed { speed } {};
+class Motorcycle : public Vehicle {
+
+public:
+
+    Motorcycle ( double speed = 90) : Vehicle ( speed ) {};
 
     double neededTimeForDistance(double dist) {
         return dist / speed;

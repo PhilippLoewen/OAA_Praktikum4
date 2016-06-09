@@ -11,7 +11,7 @@ add_subdirectory(test)
 
 set(PRAKTIKUM3_SRC
         src/DiGraph.cpp src/Node.cpp src/Edge.cpp src/Navigator.cpp
-        include/Priorityqueue.h include/liste.h include/DiGraph.h include/Node.h include/Edge.h
+        include/Priorityqueue.h include/DiGraph.h include/Node.h include/Edge.h
         include/OpenCVGraphVisualizer.h include/SimpleException.h include/GraphVisualizer.h
         include/Navigator.h include/Bicycle.h include/Car.h include/Motorcycle.h include/Vehicle.h)
 
